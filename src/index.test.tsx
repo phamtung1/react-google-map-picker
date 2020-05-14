@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import MapPicker from './MapPicker'
 
-describe('ExampleComponent', () => {
+describe('MapPicker', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(MapPicker).toBeTruthy()
   })
 })

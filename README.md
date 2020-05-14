@@ -1,5 +1,7 @@
 # react-google-map-picker
 
+A simple google map location picker (latitute, longitute)
+
 [![NPM](https://img.shields.io/npm/v/react-google-map-picker.svg)](https://www.npmjs.com/package/react-google-map-picker) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
@@ -10,17 +12,33 @@ npm install --save react-google-map-picker
 
 ## Usage
 
-```tsx
-import React, { Component } from 'react'
+```jsx
+import React, { useState } from 'react'
 
-import MyComponent from 'react-google-map-picker'
+import MapPicker from 'react-google-map-picker'
 import 'react-google-map-picker/dist/index.css'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
+const App = () => {
+  const [lat, setLat] = useState(10);
+  const [lng, setLng] = useState(20);
+
+  function handleChangeLocation (lat, lng){
+    setLat(lat);
+    setLng(lng);
   }
+
+  return (
+    <>
+  <label>Latitute:</label><input type='text' value={lat} disabled/>
+  <label>Longitute:</label><input type='text' value={lng} disabled/>
+  <MapPicker defaultLocation={{lat: lat, lng: lng}} onChange={handleChangeLocation} apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
+  </>
+  );
 }
+
+export default App
+
+
 ```
 
 ## License
