@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5f80976fa72e9f95c1156b5a1d84d07d",
+    "revision": "4863a283277194934480965d6835615f",
     "url": "/react-google-map-picker/index.html"
   },
   {
-    "revision": "b231203bab73c0cc2ef1",
+    "revision": "842b7483f191fc7c9add",
     "url": "/react-google-map-picker/static/css/main.432df639.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-google-map-picker/static/js/2.90696476.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b231203bab73c0cc2ef1",
-    "url": "/react-google-map-picker/static/js/main.d32e2b65.chunk.js"
+    "revision": "842b7483f191fc7c9add",
+    "url": "/react-google-map-picker/static/js/main.1d7ec682.chunk.js"
   },
   {
     "revision": "818af22495eb83e347d2",
