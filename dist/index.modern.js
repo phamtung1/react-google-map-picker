@@ -17,10 +17,14 @@ function isValidLocation(lat, lng) {
   return Math.abs(lat) <= 90 && Math.abs(lng) <= 180;
 }
 
+var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
+
 var MapPicker = function MapPicker(_ref) {
   var apiKey = _ref.apiKey,
       defaultLocation = _ref.defaultLocation,
-      onChange = _ref.onChange;
+      onChange = _ref.onChange,
+      style = _ref.style,
+      className = _ref.className;
   var loaded = React.useRef(false);
   var marker = React.useRef(null);
 
@@ -33,7 +37,7 @@ var MapPicker = function MapPicker(_ref) {
 
   function loadMap() {
     var Google = window.google;
-    var map = new Google.maps.Map(document.getElementById('google-map-view'), {
+    var map = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), {
       center: isValidLocation(defaultLocation.lat, defaultLocation.lng) ? defaultLocation : {
         lat: 0,
         lng: 0
@@ -64,13 +68,15 @@ var MapPicker = function MapPicker(_ref) {
       loaded.current = true;
     }
   }, []);
-  return React.createElement("div", null, React.createElement("div", {
-    id: "google-map-view",
-    style: {
-      width: '100%',
-      height: '600px'
-    }
-  }));
+  var componentStyle = Object.assign({
+    width: '100%',
+    height: '600px'
+  }, style || {});
+  return React.createElement("div", {
+    id: MAP_VIEW_ID,
+    style: componentStyle,
+    className: className
+  });
 };
 
 export default MapPicker;

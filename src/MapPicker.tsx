@@ -18,13 +18,18 @@ type Props = {
     apiKey:string,
     defaultLocation:{lat:number,lng:number};
     onChange?(lat:number,lng:number):void;
+    style?:any;
+    className?:string;
 }
 
 function isValidLocation(lat:number, lng:number){
     return Math.abs(lat) <= 90 && Math.abs(lng) <= 180;
 }
 
-const MapPicker:FC<Props> = ({apiKey, defaultLocation, onChange}) => {
+const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
+
+const MapPicker:FC<Props> = ({apiKey, defaultLocation, onChange, style,className}) => {
+    
     const loaded = React.useRef(false);
     let marker = React.useRef<any>(null);
 
@@ -38,7 +43,7 @@ const MapPicker:FC<Props> = ({apiKey, defaultLocation, onChange}) => {
     function loadMap(){
         const Google = (window as any).google;
 
-        const map = new Google.maps.Map(document.getElementById('google-map-view'), 
+        const map = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), 
             { 
                 center: isValidLocation(defaultLocation.lat, defaultLocation.lng) ? defaultLocation : { lat: 0, lng: 0},
                 zoom: 5 
@@ -73,10 +78,10 @@ const MapPicker:FC<Props> = ({apiKey, defaultLocation, onChange}) => {
 
     },[])  // eslint-disable-line react-hooks/exhaustive-deps
 
+    const componentStyle = Object.assign({width: '100%', height:'600px'}, style || {});
+
    return (
-      <div>
-        <div id="google-map-view" style={{width: '100%', height:'600px'}}></div>
-      </div>
+    <div id={MAP_VIEW_ID} style={componentStyle} className={className}></div>
    );
 };
 export default MapPicker;

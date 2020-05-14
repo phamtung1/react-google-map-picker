@@ -6,6 +6,8 @@ declare type Props = {
         lng: number;
     };
     onChange?(lat: number, lng: number): void;
+    style?: any;
+    className?: string;
 };
 declare const MapPicker: FC<Props>;
 export default MapPicker;
