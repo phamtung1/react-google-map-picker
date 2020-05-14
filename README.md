@@ -9,6 +9,9 @@ A simple google map location picker (latitute, longitute)
 ```bash
 npm install --save react-google-map-picker
 ```
+## Demo
+
+[DEMO](https://phamtung1.github.io/react-google-map-picker/)
 
 ## Usage
 

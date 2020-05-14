@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
 import MapPicker from 'react-google-map-picker'
-import 'react-google-map-picker/dist/index.css'
 
 const App = () => {
   const [lat, setLat] = useState(10);
@@ -16,7 +15,7 @@ const App = () => {
     <>
   <label>Latitute:</label><input type='text' value={lat} disabled/>
   <label>Longitute:</label><input type='text' value={lng} disabled/>
-  <MapPicker defaultLocation={{lat: lat, lng: lng}} onChange={handleChangeLocation} apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
+  <MapPicker defaultLocation={{lat: lat, lng: lng}} onChange={handleChangeLocation} apiKey='[YOUR_GOOGLE_API_KEY]'/>
   </>
   );
 }
