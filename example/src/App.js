@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import MapPicker from 'react-google-map-picker'
 
 const App = () => {
-  const [lat, setLat] = useState(10);
-  const [lng, setLng] = useState(20);
+  const [lat, setLat] = useState(22);
+  const [lng, setLng] = useState(99);
 
   function handleChangeLocation (lat, lng){
     setLat(lat);

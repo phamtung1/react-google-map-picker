@@ -42,26 +42,27 @@ const MapPicker:FC<Props> = ({apiKey, defaultLocation, onChange, style,className
 
     function loadMap(){
         const Google = (window as any).google;
-
+        const centerLocation = isValidLocation(defaultLocation.lat, defaultLocation.lng) ? defaultLocation : { lat: 0, lng: 0};
         const map = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), 
             { 
-                center: isValidLocation(defaultLocation.lat, defaultLocation.lng) ? defaultLocation : { lat: 0, lng: 0},
+                center: centerLocation,
                 zoom: 5 
             });
 
+            if(!marker.current){
+                marker.current = new Google.maps.Marker({
+                    position: centerLocation,
+                    map: map,
+                    draggable: true
+                });
+                Google.maps.event.addListener(marker.current, 'dragend', handleChangeLocation);
+            } else {
+                marker.current.setPosition(centerLocation);
+            }
+
             Google.maps.event.addListener(map, 'click', function(event:any) {                
                 var clickedLocation = event.latLng;
-                if(!marker.current){
-                    marker.current = new Google.maps.Marker({
-                        position: clickedLocation,
-                        map: map,
-                        draggable: true
-                    });
-                    Google.maps.event.addListener(marker.current, 'dragend', handleChangeLocation);
-                } else {
-                    marker.current.setPosition(clickedLocation);
-                }
-
+                marker.current.setPosition(clickedLocation);
                 handleChangeLocation();
             });
     }
