@@ -1,76 +1,93 @@
 import React from 'react';
 
 function loadScript(src, id) {
-  var script = document.createElement('script');
+  const script = document.createElement('script');
   script.setAttribute('async', '');
   script.setAttribute('id', id);
   script.src = src;
   document.querySelector('head').appendChild(script);
-  return new Promise(function (resolve) {
-    script.onload = function () {
+  return new Promise(resolve => {
+    script.onload = () => {
       resolve();
     };
   });
 }
 
-function isValidLocation(lat, lng) {
-  return Math.abs(lat) <= 90 && Math.abs(lng) <= 180;
+function isValidLocation(location) {
+  return location && Math.abs(location.lat) <= 90 && Math.abs(location.lng) <= 180;
 }
 
-var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
+const GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
+const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
 
-var MapPicker = function MapPicker(_ref) {
-  var apiKey = _ref.apiKey,
-      defaultLocation = _ref.defaultLocation,
-      onChange = _ref.onChange,
-      style = _ref.style,
-      className = _ref.className;
-  var loaded = React.useRef(false);
-  var marker = React.useRef(null);
+const MapPicker = ({
+  apiKey,
+  defaultLocation,
+  zoom: _zoom = 7,
+  onChangeLocation,
+  onChangeZoom,
+  style,
+  className
+}) => {
+  const map = React.useRef(null);
+  const marker = React.useRef(null);
 
   function handleChangeLocation() {
-    if (onChange) {
-      var currentLocation = marker.current.getPosition();
-      onChange(currentLocation.lat(), currentLocation.lng());
+    if (onChangeLocation) {
+      const currentLocation = marker.current.getPosition();
+      onChangeLocation(currentLocation.lat(), currentLocation.lng());
     }
   }
 
+  function handleChangeZoom() {
+    onChangeZoom && onChangeZoom(map.current.getZoom());
+  }
+
   function loadMap() {
-    var Google = window.google;
-    var centerLocation = isValidLocation(defaultLocation.lat, defaultLocation.lng) ? defaultLocation : {
+    const Google = window.google;
+    const validLocation = isValidLocation(defaultLocation) ? defaultLocation : {
       lat: 0,
       lng: 0
     };
-    var map = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), {
-      center: centerLocation,
-      zoom: 5
+    map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), {
+      center: validLocation,
+      zoom: _zoom
     });
 
     if (!marker.current) {
       marker.current = new Google.maps.Marker({
-        position: centerLocation,
-        map: map,
+        position: validLocation,
+        map: map.current,
         draggable: true
       });
       Google.maps.event.addListener(marker.current, 'dragend', handleChangeLocation);
     } else {
-      marker.current.setPosition(centerLocation);
+      marker.current.setPosition(validLocation);
     }
 
-    Google.maps.event.addListener(map, 'click', function (event) {
-      var clickedLocation = event.latLng;
+    map.current.addListener('click', function (event) {
+      const clickedLocation = event.latLng;
       marker.current.setPosition(clickedLocation);
       handleChangeLocation();
     });
+    map.current.addListener('zoom_changed', handleChangeZoom);
   }
 
-  React.useEffect(function () {
-    if (!loaded.current) {
-      loadScript('https://maps.googleapis.com/maps/api/js?libraries=places&key=' + apiKey, 'google-maps').then(loadMap);
-      loaded.current = true;
-    }
+  React.useEffect(() => {
+    loadScript(GOOGLE_SCRIPT_URL + apiKey, 'google-maps').then(loadMap);
   }, []);
-  var componentStyle = Object.assign({
+  React.useEffect(() => {
+    if (marker.current) {
+      map.current.setCenter(defaultLocation);
+      marker.current.setPosition(defaultLocation);
+    }
+  }, [defaultLocation]);
+  React.useEffect(() => {
+    if (map.current) {
+      map.current.setZoom(_zoom);
+    }
+  }, [_zoom]);
+  const componentStyle = Object.assign({
     width: '100%',
     height: '600px'
   }, style || {});
