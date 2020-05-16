@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,iBACE,iBAAkB,CAClB,YAAa,CACb,qBAAsB,CACtB,iBAAkB,CAClB,qBACF,CAEA,MACE,YACF","file":"main.167435a9.chunk.css","sourcesContent":["input[type=text] {\n  padding: 12px 20px;\n  margin: 8px 0;\n  border: 1px solid #ccc;\n  border-radius: 4px;\n  box-sizing: border-box;\n}\n\nlabel {\n  padding:10px;\n}"]}
