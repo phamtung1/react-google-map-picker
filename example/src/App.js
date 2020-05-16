@@ -22,6 +22,7 @@ const App = () => {
 
   function handleResetLocation(){
     setDefaultLocation({ ... DefaultLocation});
+    setLocation({ ... DefaultLocation});
     setZoom(DefaultZoom);
   }
 
@@ -31,7 +32,7 @@ const App = () => {
   <label>Latitute:</label><input type='text' value={location.lat} disabled/>
   <label>Longitute:</label><input type='text' value={location.lng} disabled/>
   <label>Zoom:</label><input type='text' value={zoom} disabled/>
-  
+
   <MapPicker defaultLocation={defaultLocation}
     zoom={zoom}
     style={{height:'700px'}}

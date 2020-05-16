@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/react-google-map-picker/static/css/main.167435a9.chunk.css",
-    "main.js": "/react-google-map-picker/static/js/main.22b6059d.chunk.js",
-    "main.js.map": "/react-google-map-picker/static/js/main.22b6059d.chunk.js.map",
+    "main.js": "/react-google-map-picker/static/js/main.ede9111c.chunk.js",
+    "main.js.map": "/react-google-map-picker/static/js/main.ede9111c.chunk.js.map",
     "runtime-main.js": "/react-google-map-picker/static/js/runtime-main.ca6a8452.js",
     "runtime-main.js.map": "/react-google-map-picker/static/js/runtime-main.ca6a8452.js.map",
-    "static/js/2.7cd9af86.chunk.js": "/react-google-map-picker/static/js/2.7cd9af86.chunk.js",
-    "static/js/2.7cd9af86.chunk.js.map": "/react-google-map-picker/static/js/2.7cd9af86.chunk.js.map",
+    "static/js/2.79952256.chunk.js": "/react-google-map-picker/static/js/2.79952256.chunk.js",
+    "static/js/2.79952256.chunk.js.map": "/react-google-map-picker/static/js/2.79952256.chunk.js.map",
     "index.html": "/react-google-map-picker/index.html",
-    "precache-manifest.add0f739a8802bd3bb536fc394aa5f33.js": "/react-google-map-picker/precache-manifest.add0f739a8802bd3bb536fc394aa5f33.js",
+    "precache-manifest.e1a9ad4b225ea195e0303de66974653f.js": "/react-google-map-picker/precache-manifest.e1a9ad4b225ea195e0303de66974653f.js",
     "service-worker.js": "/react-google-map-picker/service-worker.js",
     "static/css/main.167435a9.chunk.css.map": "/react-google-map-picker/static/css/main.167435a9.chunk.css.map",
-    "static/js/2.7cd9af86.chunk.js.LICENSE.txt": "/react-google-map-picker/static/js/2.7cd9af86.chunk.js.LICENSE.txt"
+    "static/js/2.79952256.chunk.js.LICENSE.txt": "/react-google-map-picker/static/js/2.79952256.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ca6a8452.js",
-    "static/js/2.7cd9af86.chunk.js",
+    "static/js/2.79952256.chunk.js",
     "static/css/main.167435a9.chunk.css",
-    "static/js/main.22b6059d.chunk.js"
+    "static/js/main.ede9111c.chunk.js"
   ]
 }
