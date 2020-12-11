@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-google-map-picker/static/css/main.621db226.chunk.css",
-    "main.js": "/react-google-map-picker/static/js/main.00b0085c.chunk.js",
-    "main.js.map": "/react-google-map-picker/static/js/main.00b0085c.chunk.js.map",
+    "main.js": "/react-google-map-picker/static/js/main.84796995.chunk.js",
+    "main.js.map": "/react-google-map-picker/static/js/main.84796995.chunk.js.map",
     "runtime-main.js": "/react-google-map-picker/static/js/runtime-main.fac9d0d4.js",
     "runtime-main.js.map": "/react-google-map-picker/static/js/runtime-main.fac9d0d4.js.map",
     "static/js/2.c61091fa.chunk.js": "/react-google-map-picker/static/js/2.c61091fa.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.fac9d0d4.js",
     "static/js/2.c61091fa.chunk.js",
     "static/css/main.621db226.chunk.css",
-    "static/js/main.00b0085c.chunk.js"
+    "static/js/main.84796995.chunk.js"
   ]
 }
