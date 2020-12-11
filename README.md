@@ -2,13 +2,19 @@
 
 A simple google map location picker (latitute, longitute)
 
-[![NPM](https://img.shields.io/npm/v/react-google-map-picker.svg)](https://www.npmjs.com/package/react-google-map-picker) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/react-google-map-picker.svg)](https://www.npmjs.com/package/react-google-map-picker) 
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![abc](https://img.shields.io/badge/react-17-blue)](https://reactjs.org/blog/2020/10/20/react-v17.html)
 
 ## Install
 
 ```bash
 npm install --save react-google-map-picker
 ```
+
+React 16: version <=1.1.1
+
+React 17: version 1.2.0
 ## Demo
 
 [DEMO](https://phamtung1.github.io/react-google-map-picker/)
@@ -63,17 +69,23 @@ const App = () => {
 export default App
 
 ```
-
 ## Development
 
-Publishing to npm
-#### ```npm publish```
+### Install packages
+#### ```yarn install```
+
+### Build
+
+#### ```yarn build```
+
+### Publishing to npm
+#### ```yarn publish```
 This builds commonjs and es versions of your module to dist/ and then publishes your module to npm.
 
 Make sure that any npm modules you want as peer dependencies are properly marked as peerDependencies in package.json. The rollup config will automatically recognize them as peers and not try to bundle them in your module.
 
-Deploying to Github Pages
-### ```npm run deploy```
+### Deploying to Github Pages
+### ```yarn deploy```
 This creates a production build of the example create-react-app that showcases your library and then runs gh-pages to deploy the resulting bundle.
 
 ## License
