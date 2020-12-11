@@ -21,8 +21,8 @@ const App = () => {
   }
 
   function handleResetLocation(){
-    setDefaultLocation({ ... DefaultLocation});
-    setLocation({ ... DefaultLocation});
+    setDefaultLocation({...DefaultLocation});
+    setLocation({...DefaultLocation});
     setZoom(DefaultZoom);
   }
 

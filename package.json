@@ -1,6 +1,6 @@
 {
   "name": "react-google-map-picker",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A simple google map location picker (latitute, longitute)",
   "author": "phamtung1",
   "license": "MIT",

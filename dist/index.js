@@ -2,7 +2,23 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = _interopDefault(require('react'));
 
+function isGoogleMapScriptLoaded(id) {
+  var scripts = document.head.getElementsByTagName('script');
+
+  for (var i = 0; i < scripts.length; i++) {
+    if (scripts[i].getAttribute('id') === id) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 function loadScript(src, id) {
+  if (isGoogleMapScriptLoaded(id)) {
+    return Promise.resolve();
+  }
+
   var script = document.createElement('script');
   script.setAttribute('async', '');
   script.setAttribute('id', id);
