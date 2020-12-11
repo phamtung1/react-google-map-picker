@@ -14,7 +14,9 @@ function isGoogleMapScriptLoaded(id) {
 
 function loadScript(src, id) {
   if (isGoogleMapScriptLoaded(id)) {
-    return Promise.resolve();
+    return new Promise(function (resolve) {
+      return setTimeout(resolve, 500);
+    });
   }
 
   var script = document.createElement('script');
@@ -34,7 +36,6 @@ function isValidLocation(location) {
 }
 
 var GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
-var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
 
 var MapPicker = function MapPicker(_ref) {
   var apiKey = _ref.apiKey,
@@ -45,6 +46,7 @@ var MapPicker = function MapPicker(_ref) {
       onChangeZoom = _ref.onChangeZoom,
       style = _ref.style,
       className = _ref.className;
+  var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
 
@@ -90,7 +92,7 @@ var MapPicker = function MapPicker(_ref) {
   }
 
   React.useEffect(function () {
-    loadScript(GOOGLE_SCRIPT_URL + apiKey, 'google-maps').then(loadMap);
+    loadScript(GOOGLE_SCRIPT_URL + apiKey, 'google-maps-' + apiKey).then(loadMap);
   }, []);
   React.useEffect(function () {
     if (marker.current) {

@@ -13,8 +13,10 @@ function isGoogleMapScriptLoaded(id: string): boolean {
 
 function loadScript(src: string, id: string) {
     if (isGoogleMapScriptLoaded(id)) {
-        return Promise.resolve();
+        // Make sure the script is loaded
+        return new Promise((resolve) => setTimeout(resolve, 500));
     }
+
     const script = document.createElement('script');
     script.setAttribute('async', '');
     script.setAttribute('id', id);
@@ -48,10 +50,9 @@ function isValidLocation(location: Location) {
 }
 
 const GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
-const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
 
 const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocation, onChangeZoom, style, className }) => {
-
+    const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
     const map = React.useRef<any>(null);
     const marker = React.useRef<any>(null);
 
@@ -98,7 +99,7 @@ const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocat
     }
 
     React.useEffect(() => {
-        loadScript(GOOGLE_SCRIPT_URL + apiKey, 'google-maps').then(loadMap);
+        loadScript(GOOGLE_SCRIPT_URL + apiKey, 'google-maps-' + apiKey).then(loadMap);
     }, [])  // eslint-disable-line react-hooks/exhaustive-deps
 
     React.useEffect(() => {
