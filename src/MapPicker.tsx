@@ -35,6 +35,13 @@ type Location = {
     lng: number
 }
 
+enum MapTypeId {
+    Roadmap = 'roadmap',
+    Satellite = 'satellite',
+    Hybrid = 'hybrid',
+    Terrain = 'terrain'
+}
+
 type Props = {
     apiKey: string,
     defaultLocation: Location;
@@ -43,6 +50,7 @@ type Props = {
     onChangeZoom?(zoom: number): void;
     style?: any;
     className?: string;
+    mapTypeId?: MapTypeId
 }
 
 function isValidLocation(location: Location) {
@@ -51,7 +59,7 @@ function isValidLocation(location: Location) {
 
 const GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
 
-const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocation, onChangeZoom, style, className }) => {
+const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocation, onChangeZoom, style, className, mapTypeId }) => {
     const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
     const map = React.useRef<any>(null);
     const marker = React.useRef<any>(null);
@@ -74,7 +82,8 @@ const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocat
         map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID),
             {
                 center: validLocation,
-                zoom: zoom
+                zoom: zoom,
+                ...(mapTypeId && { mapTypeId })
             });
 
         if (!marker.current) {
