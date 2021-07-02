@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-google-map-picker/static/css/main.621db226.chunk.css",
-    "main.js": "/react-google-map-picker/static/js/main.00b0085c.chunk.js",
-    "main.js.map": "/react-google-map-picker/static/js/main.00b0085c.chunk.js.map",
+    "main.css": "/react-google-map-picker/static/css/main.4985438c.chunk.css",
+    "main.js": "/react-google-map-picker/static/js/main.ed940e9b.chunk.js",
+    "main.js.map": "/react-google-map-picker/static/js/main.ed940e9b.chunk.js.map",
     "runtime-main.js": "/react-google-map-picker/static/js/runtime-main.fac9d0d4.js",
     "runtime-main.js.map": "/react-google-map-picker/static/js/runtime-main.fac9d0d4.js.map",
     "static/js/2.c61091fa.chunk.js": "/react-google-map-picker/static/js/2.c61091fa.chunk.js",
     "static/js/2.c61091fa.chunk.js.map": "/react-google-map-picker/static/js/2.c61091fa.chunk.js.map",
     "index.html": "/react-google-map-picker/index.html",
-    "static/css/main.621db226.chunk.css.map": "/react-google-map-picker/static/css/main.621db226.chunk.css.map",
+    "static/css/main.4985438c.chunk.css.map": "/react-google-map-picker/static/css/main.4985438c.chunk.css.map",
     "static/js/2.c61091fa.chunk.js.LICENSE.txt": "/react-google-map-picker/static/js/2.c61091fa.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fac9d0d4.js",
     "static/js/2.c61091fa.chunk.js",
-    "static/css/main.621db226.chunk.css",
-    "static/js/main.00b0085c.chunk.js"
+    "static/css/main.4985438c.chunk.css",
+    "static/js/main.ed940e9b.chunk.js"
   ]
 }

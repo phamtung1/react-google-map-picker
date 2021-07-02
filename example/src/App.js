@@ -32,20 +32,31 @@ const App = () => {
   <label>Latitute:</label><input type='text' value={location.lat} disabled/>
   <label>Longitute:</label><input type='text' value={location.lng} disabled/>
   <label>Zoom:</label><input type='text' value={zoom} disabled/>
+ 
+  <div class="row">
 
-  <MapPicker defaultLocation={defaultLocation}
-    zoom={zoom}
-    style={{height:'700px'}}
-    onChangeLocation={handleChangeLocation} 
-    onChangeZoom={handleChangeZoom}
-    apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
-
+  <div class="column">
+    <h4>Map 1</h4>
     <MapPicker defaultLocation={defaultLocation}
     zoom={zoom}
     style={{height:'700px'}}
     onChangeLocation={handleChangeLocation} 
     onChangeZoom={handleChangeZoom}
     apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
+  </div>
+
+  <div class="column">
+    <h4>Map 2</h4>
+    <MapPicker defaultLocation={defaultLocation}
+    zoom={zoom}
+    style={{height:'700px'}}
+    onChangeLocation={handleChangeLocation} 
+    onChangeZoom={handleChangeZoom}
+    apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
+  </div>
+  
+  </div>
+
   </>
   );
 }

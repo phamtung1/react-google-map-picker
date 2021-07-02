@@ -23,7 +23,7 @@ function loadScript(src: string, id: string) {
     script.src = src;
     (document.querySelector('head') as any).appendChild(script);
 
-    return new Promise((resolve) => {
+    return new Promise<void>((resolve) => {
         script.onload = () => {
             resolve();
         };
