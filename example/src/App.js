@@ -36,9 +36,10 @@ const App = () => {
   <div class="row">
 
   <div class="column">
-    <h4>Map 1</h4>
+    <h4>Map 1 (roadmap)</h4>
     <MapPicker defaultLocation={defaultLocation}
     zoom={zoom}
+    mapTypeId="roadmap"
     style={{height:'700px'}}
     onChangeLocation={handleChangeLocation} 
     onChangeZoom={handleChangeZoom}
@@ -46,9 +47,10 @@ const App = () => {
   </div>
 
   <div class="column">
-    <h4>Map 2</h4>
+    <h4>Map 2 (satellite)</h4>
     <MapPicker defaultLocation={defaultLocation}
     zoom={zoom}
+    mapTypeId="satellite"
     style={{height:'700px'}}
     onChangeLocation={handleChangeLocation} 
     onChangeZoom={handleChangeZoom}

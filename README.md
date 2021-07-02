@@ -58,6 +58,7 @@ const App = () => {
   
   <MapPicker defaultLocation={defaultLocation}
     zoom={zoom}
+    mapTypeId="roadmap"
     style={{height:'700px'}}
     onChangeLocation={handleChangeLocation} 
     onChangeZoom={handleChangeZoom}
@@ -69,6 +70,12 @@ const App = () => {
 export default App
 
 ```
+### New property (thanks to @nikolicstjepan)
+
+- mapTypeId: roadmap, satellite, hybrid, terrain
+
+
+
 ## Development
 
 ### Install packages
@@ -87,6 +94,11 @@ Make sure that any npm modules you want as peer dependencies are properly marked
 ### Deploying to Github Pages
 ### ```yarn deploy```
 This creates a production build of the example create-react-app that showcases your library and then runs gh-pages to deploy the resulting bundle.
+
+## Contributors
+A special thanks to:
+
+[![](https://avatars.githubusercontent.com/u/28703604?v=4&size=50)](https://github.com/nikolicstjepan)
 
 ## License
 
