@@ -2,6 +2,24 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = _interopDefault(require('react'));
 
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
 function isGoogleMapScriptLoaded(id) {
   var scripts = document.head.getElementsByTagName('script');
 
@@ -33,6 +51,15 @@ function loadScript(src, id) {
   });
 }
 
+var MapTypeId;
+
+(function (MapTypeId) {
+  MapTypeId["Roadmap"] = "roadmap";
+  MapTypeId["Satellite"] = "satellite";
+  MapTypeId["Hybrid"] = "hybrid";
+  MapTypeId["Terrain"] = "terrain";
+})(MapTypeId || (MapTypeId = {}));
+
 function isValidLocation(location) {
   return location && Math.abs(location.lat) <= 90 && Math.abs(location.lng) <= 180;
 }
@@ -47,7 +74,8 @@ var MapPicker = function MapPicker(_ref) {
       onChangeLocation = _ref.onChangeLocation,
       onChangeZoom = _ref.onChangeZoom,
       style = _ref.style,
-      className = _ref.className;
+      className = _ref.className,
+      mapTypeId = _ref.mapTypeId;
   var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
@@ -69,10 +97,12 @@ var MapPicker = function MapPicker(_ref) {
       lat: 0,
       lng: 0
     };
-    map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), {
+    map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), _extends({
       center: validLocation,
       zoom: zoom
-    });
+    }, mapTypeId && {
+      mapTypeId: mapTypeId
+    }));
 
     if (!marker.current) {
       marker.current = new Google.maps.Marker({
