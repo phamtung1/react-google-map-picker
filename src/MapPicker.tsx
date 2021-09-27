@@ -51,6 +51,11 @@ enum DisableDoubleClickZoom {
     False = 'false'
 }
 
+enum ZoomControl {
+    True = 'true',
+    False = 'false'
+}
+
 type Props = {
     apiKey: string,
     defaultLocation: Location;
@@ -62,6 +67,7 @@ type Props = {
     mapTypeId?: MapTypeId;
     gestureHandling?: GestureHandling;
     disableDoubleClickZoom?: DisableDoubleClickZoom;
+    zoomControl?: ZoomControl;
 }
 
 function isValidLocation(location: Location) {
@@ -70,7 +76,19 @@ function isValidLocation(location: Location) {
 
 const GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
 
-const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocation, onChangeZoom, style, className, mapTypeId, gestureHandling, disableDoubleClickZoom }) => {
+const MapPicker: FC<Props> = ({
+    apiKey,
+    defaultLocation,
+    zoom = 7,
+    onChangeLocation,
+    onChangeZoom,
+    style,
+    className,
+    mapTypeId,
+    gestureHandling,
+    disableDoubleClickZoom,
+    zoomControl
+}) => {
     const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
     const map = React.useRef<any>(null);
     const marker = React.useRef<any>(null);
@@ -95,7 +113,8 @@ const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocat
                 center: validLocation,
                 zoom: zoom,
                 mapTypeId: mapTypeId,
-                disableDoubleClickZoom,
+                disableDoubleClickZoom: disableDoubleClickZoom,
+                zoomControl: zoomControl,
                 ...(gestureHandling && { gestureHandling }),
             });
 
