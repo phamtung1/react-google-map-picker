@@ -9,6 +9,13 @@ declare enum MapTypeId {
     Hybrid = "hybrid",
     Terrain = "terrain"
 }
+declare enum GestureHandling {
+    Greedy = "greedy"
+}
+declare enum DisableDoubleClickZoom {
+    True = "true",
+    False = "false"
+}
 declare type Props = {
     apiKey: string;
     defaultLocation: Location;
@@ -18,6 +25,8 @@ declare type Props = {
     style?: any;
     className?: string;
     mapTypeId?: MapTypeId;
+    gestureHandling?: GestureHandling;
+    disableDoubleClickZoom?: DisableDoubleClickZoom;
 };
 declare const MapPicker: FC<Props>;
 export default MapPicker;

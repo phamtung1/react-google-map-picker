@@ -58,6 +58,19 @@ var MapTypeId;
   MapTypeId["Terrain"] = "terrain";
 })(MapTypeId || (MapTypeId = {}));
 
+var GestureHandling;
+
+(function (GestureHandling) {
+  GestureHandling["Greedy"] = "greedy";
+})(GestureHandling || (GestureHandling = {}));
+
+var DisableDoubleClickZoom;
+
+(function (DisableDoubleClickZoom) {
+  DisableDoubleClickZoom["True"] = "true";
+  DisableDoubleClickZoom["False"] = "false";
+})(DisableDoubleClickZoom || (DisableDoubleClickZoom = {}));
+
 function isValidLocation(location) {
   return location && Math.abs(location.lat) <= 90 && Math.abs(location.lng) <= 180;
 }
@@ -73,7 +86,9 @@ var MapPicker = function MapPicker(_ref) {
       onChangeZoom = _ref.onChangeZoom,
       style = _ref.style,
       className = _ref.className,
-      mapTypeId = _ref.mapTypeId;
+      mapTypeId = _ref.mapTypeId,
+      gestureHandling = _ref.gestureHandling,
+      disableDoubleClickZoom = _ref.disableDoubleClickZoom;
   var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
@@ -97,9 +112,11 @@ var MapPicker = function MapPicker(_ref) {
     };
     map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), _extends({
       center: validLocation,
-      zoom: zoom
-    }, mapTypeId && {
-      mapTypeId: mapTypeId
+      zoom: zoom,
+      mapTypeId: mapTypeId,
+      disableDoubleClickZoom: disableDoubleClickZoom
+    }, gestureHandling && {
+      gestureHandling: gestureHandling
     }));
 
     if (!marker.current) {
