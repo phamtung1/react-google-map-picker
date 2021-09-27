@@ -61,6 +61,11 @@ enum ScaleControl {
     False = 'false'
 }
 
+enum FullScreenControl {
+    True = 'true',
+    False = 'false'
+}
+
 type Props = {
     apiKey: string,
     defaultLocation: Location;
@@ -74,6 +79,7 @@ type Props = {
     disableDoubleClickZoom?: DisableDoubleClickZoom;
     zoomControl?: ZoomControl;
     scaleControl?: ScaleControl;
+    fullScreenControl?: FullScreenControl;
 }
 
 function isValidLocation(location: Location) {
@@ -95,6 +101,7 @@ const MapPicker: FC<Props> = ({
     disableDoubleClickZoom,
     zoomControl,
     scaleControl,
+    fullScreenControl
 }) => {
     const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
     const map = React.useRef<any>(null);
@@ -123,6 +130,7 @@ const MapPicker: FC<Props> = ({
                 disableDoubleClickZoom: disableDoubleClickZoom,
                 zoomControl: zoomControl,
                 scaleControl: scaleControl,
+                fullScreenControl: fullScreenControl,
                 ...(gestureHandling && { gestureHandling }),
             });
 

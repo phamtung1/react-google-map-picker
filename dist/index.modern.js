@@ -85,6 +85,13 @@ var ScaleControl;
   ScaleControl["False"] = "false";
 })(ScaleControl || (ScaleControl = {}));
 
+var FullScreenControl;
+
+(function (FullScreenControl) {
+  FullScreenControl["True"] = "true";
+  FullScreenControl["False"] = "false";
+})(FullScreenControl || (FullScreenControl = {}));
+
 function isValidLocation(location) {
   return location && Math.abs(location.lat) <= 90 && Math.abs(location.lng) <= 180;
 }
@@ -104,7 +111,8 @@ var MapPicker = function MapPicker(_ref) {
       gestureHandling = _ref.gestureHandling,
       disableDoubleClickZoom = _ref.disableDoubleClickZoom,
       zoomControl = _ref.zoomControl,
-      scaleControl = _ref.scaleControl;
+      scaleControl = _ref.scaleControl,
+      fullScreenControl = _ref.fullScreenControl;
   var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
@@ -132,7 +140,8 @@ var MapPicker = function MapPicker(_ref) {
       mapTypeId: mapTypeId,
       disableDoubleClickZoom: disableDoubleClickZoom,
       zoomControl: zoomControl,
-      scaleControl: scaleControl
+      scaleControl: scaleControl,
+      fullScreenControl: fullScreenControl
     }, gestureHandling && {
       gestureHandling: gestureHandling
     }));
