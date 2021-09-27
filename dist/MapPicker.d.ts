@@ -41,7 +41,7 @@ declare type Props = {
     disableDoubleClickZoom?: DisableDoubleClickZoom;
     zoomControl?: ZoomControl;
     scaleControl?: ScaleControl;
-    fullScreenControl?: FullScreenControl;
+    fullscreenControl?: FullScreenControl;
 };
 declare const MapPicker: FC<Props>;
 export default MapPicker;

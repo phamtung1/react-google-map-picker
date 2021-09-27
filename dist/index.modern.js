@@ -112,7 +112,7 @@ var MapPicker = function MapPicker(_ref) {
       disableDoubleClickZoom = _ref.disableDoubleClickZoom,
       zoomControl = _ref.zoomControl,
       scaleControl = _ref.scaleControl,
-      fullScreenControl = _ref.fullScreenControl;
+      fullscreenControl = _ref.fullscreenControl;
   var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
@@ -141,7 +141,7 @@ var MapPicker = function MapPicker(_ref) {
       disableDoubleClickZoom: disableDoubleClickZoom,
       zoomControl: zoomControl,
       scaleControl: scaleControl,
-      fullScreenControl: fullScreenControl
+      fullscreenControl: fullscreenControl
     }, gestureHandling && {
       gestureHandling: gestureHandling
     }));
