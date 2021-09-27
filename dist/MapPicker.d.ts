@@ -16,6 +16,10 @@ declare enum DisableDoubleClickZoom {
     True = "true",
     False = "false"
 }
+declare enum ZoomControl {
+    True = "true",
+    False = "false"
+}
 declare type Props = {
     apiKey: string;
     defaultLocation: Location;
@@ -27,6 +31,7 @@ declare type Props = {
     mapTypeId?: MapTypeId;
     gestureHandling?: GestureHandling;
     disableDoubleClickZoom?: DisableDoubleClickZoom;
+    zoomControl?: ZoomControl;
 };
 declare const MapPicker: FC<Props>;
 export default MapPicker;
