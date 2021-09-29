@@ -28,6 +28,10 @@ declare enum FullScreenControl {
     True = "true",
     False = "false"
 }
+declare enum StreetViewControl {
+    True = "true",
+    False = "false"
+}
 declare type Props = {
     apiKey: string;
     defaultLocation: Location;
@@ -42,6 +46,7 @@ declare type Props = {
     zoomControl?: ZoomControl;
     scaleControl?: ScaleControl;
     fullscreenControl?: FullScreenControl;
+    streetViewControl?: StreetViewControl;
 };
 declare const MapPicker: FC<Props>;
 export default MapPicker;

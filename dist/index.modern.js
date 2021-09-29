@@ -92,6 +92,13 @@ var FullScreenControl;
   FullScreenControl["False"] = "false";
 })(FullScreenControl || (FullScreenControl = {}));
 
+var StreetViewControl;
+
+(function (StreetViewControl) {
+  StreetViewControl["True"] = "true";
+  StreetViewControl["False"] = "false";
+})(StreetViewControl || (StreetViewControl = {}));
+
 function isValidLocation(location) {
   return location && Math.abs(location.lat) <= 90 && Math.abs(location.lng) <= 180;
 }
@@ -112,7 +119,8 @@ var MapPicker = function MapPicker(_ref) {
       disableDoubleClickZoom = _ref.disableDoubleClickZoom,
       zoomControl = _ref.zoomControl,
       scaleControl = _ref.scaleControl,
-      fullscreenControl = _ref.fullscreenControl;
+      fullscreenControl = _ref.fullscreenControl,
+      streetViewControl = _ref.streetViewControl;
   var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
@@ -141,7 +149,8 @@ var MapPicker = function MapPicker(_ref) {
       disableDoubleClickZoom: disableDoubleClickZoom,
       zoomControl: zoomControl,
       scaleControl: scaleControl,
-      fullscreenControl: fullscreenControl
+      fullscreenControl: fullscreenControl,
+      streetViewControl: streetViewControl
     }, gestureHandling && {
       gestureHandling: gestureHandling
     }));
