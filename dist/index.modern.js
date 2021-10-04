@@ -99,6 +99,13 @@ var StreetViewControl;
   StreetViewControl["False"] = "false";
 })(StreetViewControl || (StreetViewControl = {}));
 
+var DisableDefaultUI;
+
+(function (DisableDefaultUI) {
+  DisableDefaultUI["True"] = "true";
+  DisableDefaultUI["False"] = "false";
+})(DisableDefaultUI || (DisableDefaultUI = {}));
+
 function isValidLocation(location) {
   return location && Math.abs(location.lat) <= 90 && Math.abs(location.lng) <= 180;
 }
@@ -120,7 +127,8 @@ var MapPicker = function MapPicker(_ref) {
       zoomControl = _ref.zoomControl,
       scaleControl = _ref.scaleControl,
       fullscreenControl = _ref.fullscreenControl,
-      streetViewControl = _ref.streetViewControl;
+      streetViewControl = _ref.streetViewControl,
+      disableDefaultUI = _ref.disableDefaultUI;
   var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
@@ -150,7 +158,8 @@ var MapPicker = function MapPicker(_ref) {
       zoomControl: zoomControl,
       scaleControl: scaleControl,
       fullscreenControl: fullscreenControl,
-      streetViewControl: streetViewControl
+      streetViewControl: streetViewControl,
+      disableDefaultUI: disableDefaultUI
     }, gestureHandling && {
       gestureHandling: gestureHandling
     }));
