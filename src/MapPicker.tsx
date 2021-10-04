@@ -163,9 +163,9 @@ const MapPicker: FC<Props> = ({
 
         map.current.addListener('click', function (event: any) {
             const clickedLocation = event.latLng;
-
-            marker.current.setPosition(clickedLocation);
-            handleChangeLocation();
+            console.log(clickedLocation)
+            //marker.current.setPosition(clickedLocation);
+            //handleChangeLocation();
         });
 
         map.current.addListener('zoom_changed', handleChangeZoom);

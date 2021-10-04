@@ -179,8 +179,7 @@ var MapPicker = function MapPicker(_ref) {
 
     map.current.addListener('click', function (event) {
       var clickedLocation = event.latLng;
-      marker.current.setPosition(clickedLocation);
-      handleChangeLocation();
+      console.log(clickedLocation);
     });
     map.current.addListener('zoom_changed', handleChangeZoom);
   }
