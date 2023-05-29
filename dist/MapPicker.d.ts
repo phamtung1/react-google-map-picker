@@ -1,3 +1,4 @@
+/// <reference types="google.maps" />
 import { FC } from 'react';
 declare type Location = {
     lat: number;
@@ -18,7 +19,7 @@ declare type Props = {
     style?: any;
     className?: string;
     mapTypeId?: MapTypeId;
-    icon: any;
+    icon: string | google.maps.Icon | google.maps.Symbol | null | undefined;
 };
 declare const MapPicker: FC<Props>;
 export default MapPicker;

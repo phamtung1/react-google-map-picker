@@ -1895,6 +1895,11 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
+"@types/google.maps@^3.53.2":
+  version "3.53.2"
+  resolved "https://registry.yarnpkg.com/@types/google.maps/-/google.maps-3.53.2.tgz#ba921cc7900b72d4f58538a770a99bfadd9952a2"
+  integrity sha512-rgTa3R5DyFTcjX4hmuGs0XR+kD4M5tZ14lcyYzDDJGr5h0JYj7DbbNZRZNJKDzZOGH3fOXWpIbZGj3BxZbpmjw==
+
 "@types/graceful-fs@^4.1.2":
   version "4.1.4"
   resolved "https://registry.yarnpkg.com/@types/graceful-fs/-/graceful-fs-4.1.4.tgz#4ff9f641a7c6d1a3508ff88bc3141b152772e753"

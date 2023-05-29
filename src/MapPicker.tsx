@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { FC } from 'react';
 
 function isGoogleMapScriptLoaded(id: string): boolean {
@@ -51,7 +52,7 @@ type Props = {
     style?: any;
     className?: string;
     mapTypeId?: MapTypeId;
-    icon: any; // https://developers.google.com/maps/documentation/javascript/markers#icons
+    icon: string | google.maps.Icon | google.maps.Symbol | null | undefined; // https://developers.google.com/maps/documentation/javascript/markers#icons
 }
 
 function isValidLocation(location: Location) {
@@ -77,10 +78,10 @@ const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocat
     }
 
     function loadMap() {
-        const Google = (window as any).google;
+        const Google = window.google;
         const validLocation = isValidLocation(defaultLocation) ? defaultLocation : { lat: 0, lng: 0 };
 
-        map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID),
+        map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID)!,
             {
                 center: validLocation,
                 zoom: zoom,

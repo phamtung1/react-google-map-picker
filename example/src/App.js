@@ -33,9 +33,9 @@ const App = () => {
   <label>Longitute:</label><input type='text' value={location.lng} disabled/>
   <label>Zoom:</label><input type='text' value={zoom} disabled/>
  
-  <div class="row">
+  <div className="row">
 
-  <div class="column">
+  <div className="column">
     <h4>Map 1 (roadmap)</h4>
     <MapPicker defaultLocation={defaultLocation}
     zoom={zoom}
@@ -46,7 +46,7 @@ const App = () => {
     apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
   </div>
 
-  <div class="column">
+  <div className="column">
     <h4>Map 2 (satellite)</h4>
     <MapPicker defaultLocation={defaultLocation}
     zoom={zoom}
