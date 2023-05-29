@@ -18,6 +18,7 @@ declare type Props = {
     style?: any;
     className?: string;
     mapTypeId?: MapTypeId;
+    icon: any;
 };
 declare const MapPicker: FC<Props>;
 export default MapPicker;

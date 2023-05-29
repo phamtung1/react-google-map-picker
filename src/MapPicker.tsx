@@ -50,7 +50,8 @@ type Props = {
     onChangeZoom?(zoom: number): void;
     style?: any;
     className?: string;
-    mapTypeId?: MapTypeId
+    mapTypeId?: MapTypeId;
+    icon: any; // https://developers.google.com/maps/documentation/javascript/markers#icons
 }
 
 function isValidLocation(location: Location) {
@@ -59,7 +60,7 @@ function isValidLocation(location: Location) {
 
 const GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
 
-const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocation, onChangeZoom, style, className, mapTypeId }) => {
+const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocation, onChangeZoom, style, className, mapTypeId, icon }) => {
     const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
     const map = React.useRef<any>(null);
     const marker = React.useRef<any>(null);
@@ -90,7 +91,8 @@ const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocat
             marker.current = new Google.maps.Marker({
                 position: validLocation,
                 map: map.current,
-                draggable: true
+                draggable: true,
+                icon
             });
             Google.maps.event.addListener(marker.current, 'dragend', handleChangeLocation);
         } else {
@@ -126,8 +128,6 @@ const MapPicker: FC<Props> = ({ apiKey, defaultLocation, zoom = 7, onChangeLocat
 
     const componentStyle = Object.assign({ width: '100%', height: '600px' }, style || {});
 
-    return (
-        <div id={MAP_VIEW_ID} style={componentStyle} className={className}></div>
-    );
+    return <div id={MAP_VIEW_ID} style={componentStyle} className={className} />
 };
 export default MapPicker;

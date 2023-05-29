@@ -1,27 +1,9 @@
 import React from 'react';
 
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
 function isGoogleMapScriptLoaded(id) {
-  var scripts = document.head.getElementsByTagName('script');
+  const scripts = document.head.getElementsByTagName('script');
 
-  for (var i = 0; i < scripts.length; i++) {
+  for (let i = 0; i < scripts.length; i++) {
     if (scripts[i].getAttribute('id') === id) {
       return true;
     }
@@ -32,18 +14,16 @@ function isGoogleMapScriptLoaded(id) {
 
 function loadScript(src, id) {
   if (isGoogleMapScriptLoaded(id)) {
-    return new Promise(function (resolve) {
-      return setTimeout(resolve, 500);
-    });
+    return new Promise(resolve => setTimeout(resolve, 500));
   }
 
-  var script = document.createElement('script');
+  const script = document.createElement('script');
   script.setAttribute('async', '');
   script.setAttribute('id', id);
   script.src = src;
   document.querySelector('head').appendChild(script);
-  return new Promise(function (resolve) {
-    script.onload = function () {
+  return new Promise(resolve => {
+    script.onload = () => {
       resolve();
     };
   });
@@ -62,25 +42,26 @@ function isValidLocation(location) {
   return location && Math.abs(location.lat) <= 90 && Math.abs(location.lng) <= 180;
 }
 
-var GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
+const GOOGLE_SCRIPT_URL = 'https://maps.googleapis.com/maps/api/js?libraries=places&key=';
 
-var MapPicker = function MapPicker(_ref) {
-  var apiKey = _ref.apiKey,
-      defaultLocation = _ref.defaultLocation,
-      _ref$zoom = _ref.zoom,
-      zoom = _ref$zoom === void 0 ? 7 : _ref$zoom,
-      onChangeLocation = _ref.onChangeLocation,
-      onChangeZoom = _ref.onChangeZoom,
-      style = _ref.style,
-      className = _ref.className,
-      mapTypeId = _ref.mapTypeId;
-  var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
-  var map = React.useRef(null);
-  var marker = React.useRef(null);
+const MapPicker = ({
+  apiKey,
+  defaultLocation,
+  zoom: _zoom = 7,
+  onChangeLocation,
+  onChangeZoom,
+  style,
+  className,
+  mapTypeId,
+  icon
+}) => {
+  const MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
+  const map = React.useRef(null);
+  const marker = React.useRef(null);
 
   function handleChangeLocation() {
     if (onChangeLocation) {
-      var currentLocation = marker.current.getPosition();
+      const currentLocation = marker.current.getPosition();
       onChangeLocation(currentLocation.lat(), currentLocation.lng());
     }
   }
@@ -90,23 +71,25 @@ var MapPicker = function MapPicker(_ref) {
   }
 
   function loadMap() {
-    var Google = window.google;
-    var validLocation = isValidLocation(defaultLocation) ? defaultLocation : {
+    const Google = window.google;
+    const validLocation = isValidLocation(defaultLocation) ? defaultLocation : {
       lat: 0,
       lng: 0
     };
-    map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), _extends({
+    map.current = new Google.maps.Map(document.getElementById(MAP_VIEW_ID), {
       center: validLocation,
-      zoom: zoom
-    }, mapTypeId && {
-      mapTypeId: mapTypeId
-    }));
+      zoom: _zoom,
+      ...(mapTypeId && {
+        mapTypeId
+      })
+    });
 
     if (!marker.current) {
       marker.current = new Google.maps.Marker({
         position: validLocation,
         map: map.current,
-        draggable: true
+        draggable: true,
+        icon
       });
       Google.maps.event.addListener(marker.current, 'dragend', handleChangeLocation);
     } else {
@@ -114,28 +97,28 @@ var MapPicker = function MapPicker(_ref) {
     }
 
     map.current.addListener('click', function (event) {
-      var clickedLocation = event.latLng;
+      const clickedLocation = event.latLng;
       marker.current.setPosition(clickedLocation);
       handleChangeLocation();
     });
     map.current.addListener('zoom_changed', handleChangeZoom);
   }
 
-  React.useEffect(function () {
+  React.useEffect(() => {
     loadScript(GOOGLE_SCRIPT_URL + apiKey, 'google-maps-' + apiKey).then(loadMap);
   }, []);
-  React.useEffect(function () {
+  React.useEffect(() => {
     if (marker.current) {
       map.current.setCenter(defaultLocation);
       marker.current.setPosition(defaultLocation);
     }
   }, [defaultLocation]);
-  React.useEffect(function () {
+  React.useEffect(() => {
     if (map.current) {
-      map.current.setZoom(zoom);
+      map.current.setZoom(_zoom);
     }
-  }, [zoom]);
-  var componentStyle = Object.assign({
+  }, [_zoom]);
+  const componentStyle = Object.assign({
     width: '100%',
     height: '600px'
   }, style || {});

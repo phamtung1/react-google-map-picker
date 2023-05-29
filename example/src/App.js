@@ -54,6 +54,7 @@ const App = () => {
     style={{height:'700px'}}
     onChangeLocation={handleChangeLocation} 
     onChangeZoom={handleChangeZoom}
+    icon={"https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"}
     apiKey='AIzaSyD07E1VvpsN_0FvsmKAj4nK9GnLq-9jtj8'/>
   </div>
   

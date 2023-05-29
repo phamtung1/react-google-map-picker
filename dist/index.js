@@ -75,7 +75,8 @@ var MapPicker = function MapPicker(_ref) {
       onChangeZoom = _ref.onChangeZoom,
       style = _ref.style,
       className = _ref.className,
-      mapTypeId = _ref.mapTypeId;
+      mapTypeId = _ref.mapTypeId,
+      icon = _ref.icon;
   var MAP_VIEW_ID = 'google-map-view-' + Math.random().toString(36).substr(2, 9);
   var map = React.useRef(null);
   var marker = React.useRef(null);
@@ -108,7 +109,8 @@ var MapPicker = function MapPicker(_ref) {
       marker.current = new Google.maps.Marker({
         position: validLocation,
         map: map.current,
-        draggable: true
+        draggable: true,
+        icon: icon
       });
       Google.maps.event.addListener(marker.current, 'dragend', handleChangeLocation);
     } else {
